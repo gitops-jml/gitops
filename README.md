@@ -25,4 +25,5 @@ obtain ArgoCD console pasword:\
 ## Challenges
 secrets managements\
 order dependent deployments\
-avoid duplication (Kustomize/helm)
+avoid duplication (Kustomize/helm)\
+objects manualy added and not described in app are not sync
