@@ -7,7 +7,8 @@ built on Argo CD (CNCF project)
 available as an operator (Red Hat OpenShift GitOps) in the OperatorHub\
 Installing the operator will create a default ArgoCD instance and a default project\
 ![Image](./images/init.jpg)\
-obtain ArgoCD console pasword : TBD
+obtain ArgoCD console pasword:\
+`oc extract secret/openshift-gitops-cluster -n openshift-gitops --to=-`
 
 ## Simple use cases
 ### configuring OCP Console
@@ -21,7 +22,7 @@ obtain ArgoCD console pasword : TBD
 - wait for the application to sync\
 ![Image](./images/petclinic-sync.jpg)
 - find the route in the new namespace and test the application\
-![Image](./images/petclinic.jpg)\
+![Image](./images/petclinic.jpg)
 ## Challenges
 secrets managements\
 order dependent deployments\
