@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app-spring-petclinic
-  namespace: petclinic
+  namespace: openshift-gitops
 spec:
   destination:
     namespace: spring-petclinic
@@ -11,9 +11,8 @@ spec:
   source:
     directory:
       recurse: true
-    path: app/petclinic
+    path: apps/petclinic
     repoURL: https://github.ibm.com/jm-lafont/gitops.git
-    targetRevision: main
   syncPolicy:
     automated:
       prune: true
