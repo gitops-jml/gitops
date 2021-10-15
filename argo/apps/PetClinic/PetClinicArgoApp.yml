@@ -11,8 +11,8 @@ spec:
   source:
     directory:
       recurse: true
-    path: app
-    repoURL: https://github.com/siamaksade/openshift-gitops-getting-started.git
+    path: app/petclinic
+    repoURL: https://github.ibm.com/jm-lafont/gitops.git
     targetRevision: main
   syncPolicy:
     automated:
