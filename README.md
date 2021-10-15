@@ -15,9 +15,10 @@ obtain ArgoCD console pasword : TBD
 - create a new ArcoCD application
 `cd gitops; oc apply -f argo/ceph/cephApp.yml`
 ### deploy a simple application (petclinic)
-- create a new ArcoCD application
+- create a new ArcoCD application\
 `cd gitops; oc apply -f argo/apps/PetClinic/PetClinicArgoApp.yml`
 ![Image](./images/petclinic-outofsync.jpg)\
+- wait for the application to sync\
 ![Image](./images/petclinic-sync.jpg)
 ## Challenges
 secrets managements\
