@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-config-ceph
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    directory:
+      recurse: true
+    path: infra/ceph
+    repoURL: https://github.ibm.com/jm-lafont/gitops
+    targetRevision: HEAD

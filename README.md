@@ -4,16 +4,15 @@ that uses Git as the single source of truth for everything (infrastructure and a
 ## About Openshift GitOps
 built on Argo CD (CNCF project)
 ## Installing Openshift GitOps
-available as an operator (Red Hat OpenShift GitOps) in the OperatorHub
+available as an operator (Red Hat OpenShift GitOps) in the OperatorHub\
+Installing the operator will create a default ArgoCD instance and a default project\
 ![Image](../images/init.jpg)
-```
-wget https://github.com/redhat-developer/kam/releases/download/v0.0.40/kam_linux_amd64
-chmod +x kam_linux_amd64\ 
-mv kam_linux_amd64 /usr/local/bin/kam
-```
+obtain ArgoCD console pasword : TBD
 
 ## Simple use cases
 ### configuring OCP Console
+- create a git repository for infra customizations
+- create a new ArcoCD project
 ### deploy a simple application
 ## Challenges
 secrets managements\
