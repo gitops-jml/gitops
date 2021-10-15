@@ -12,7 +12,7 @@ obtain ArgoCD console pasword : TBD
 ## Simple use cases
 ### configuring OCP Console
 - clone current repository
-- create a new ArcoCD project
+- create a new ArcoCD application
 `cd gitops; oc apply -f argo/ceph/cephApp.yml`
 ### deploy a simple application
 ## Challenges
