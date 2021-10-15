@@ -4,7 +4,8 @@ that uses Git as the single source of truth for everything (infrastructure and a
 ## About Openshift GitOps
 built on Argo CD (CNCF project)
 ## Installing Openshift GitOps
-available as an operator in the OperatorHub
+available as an operator (Red Hat OpenShift GitOps) in the OperatorHub
+![Image](../images/init.jpg)
 ```
 wget https://github.com/redhat-developer/kam/releases/download/v0.0.40/kam_linux_amd64
 chmod +x kam_linux_amd64\ 
