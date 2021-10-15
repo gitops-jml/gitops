@@ -17,9 +17,9 @@ obtain ArgoCD console pasword : TBD
 ### deploy a simple application (petclinic)
 - create a new ArcoCD application\
 `cd gitops; oc apply -f argo/apps/PetClinic/PetClinicArgoApp.yml`
-![Image](./images/petclinic-outofsync.jpg)\
+![Image](./images/petclinic-outofsync.jpg)
 - wait for the application to sync\
-![Image](./images/petclinic-sync.jpg)\
+![Image](./images/petclinic-sync.jpg)
 - find the route in the new namespace and test the application\
 ![Image](./images/petclinic.jpg)\
 ## Challenges
