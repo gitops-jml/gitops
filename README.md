@@ -14,7 +14,14 @@ obtain ArgoCD console pasword : TBD
 - clone current repository
 - create a new ArcoCD application
 `cd gitops; oc apply -f argo/ceph/cephApp.yml`
-### deploy a simple application
+### deploy a simple application (petclinic)
+- create a new ArcoCD application\
+`cd gitops; oc apply -f argo/apps/PetClinic/PetClinicArgoApp.yml`
+![Image](./images/petclinic-outofsync.jpg)\
+- wait for the application to sync\
+![Image](./images/petclinic-sync.jpg)\
+- find the route in the new namespace and test the application\
+![Image](./images/petclinic.jpg)\
 ## Challenges
 secrets managements\
 order dependent deployments\
