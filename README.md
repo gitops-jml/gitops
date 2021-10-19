@@ -10,9 +10,10 @@ GitOps is a declarative approach to **continuous delivery** that uses Git as the
 - application
 
 ## Installing Openshift GitOps
-- Openshift GitOps is available as an operator (**Red Hat OpenShift GitOps**) in the OperatorHub\
+- Openshift GitOps is available as an operator (**Red Hat OpenShift GitOps**) in the OperatorHub
 
-> Installing the operator will create a default ArgoCD instance and a default project\
+> Installing the operator will create a default ArgoCD instance and a default project
+
 ![Image](./images/init.jpg)
 - obtain ArgoCD console pasword:\
 `oc extract secret/openshift-gitops-cluster -n openshift-gitops --to=-`
