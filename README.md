@@ -10,18 +10,19 @@ Installing the operator will create a default ArgoCD instance and a default proj
 `oc extract secret/openshift-gitops-cluster -n openshift-gitops --to=-`
 - open the ArgoCD console in your browser:\
 you can use the menu link that was added by the operator on top of OCP console\
-![Image](./images/ArgoCDlink.jpg)\
-## concepts
+![Image](./images/ArgoCDlink.jpg)
+## Concepts
 ## Simple use cases
-### pre-req
+### Pre-req
 - clone the current repository
-### configuring OCP Console
-### configuring rook-ceph storage
-- look at [cephApp.yml](./argo/ceph/cephApp.yml) : this file defines a Application CRD for ArgoCD, that will use the content of https://github.ibm.com/jm-lafont/gitops/infra/ceph folder (yaml manifests) to create and synchronize resources in the current OCP cluster
-- create a new ArcoCD application from a yaml file
+### Configuring OCP Console
+TBD
+### Configuring rook-ceph storage
+- look at [cephApp.yml](./argo/config/ceph/cephApp.yml) : this file defines a Application CRD for ArgoCD, that will use the content of https://github.ibm.com/jm-lafont/gitops/infra/ceph folder (yaml manifests) to create and synchronize resources in the current OCP cluster
+- create a new ArcoCD application from a yaml file\
 `cd gitops; oc apply -f argo/ceph/cephApp.yml`
 - 
-### deploy a simple application (petclinic)
+### Deploy a simple application (petclinic)
 - create a new ArcoCD application\
 `cd gitops; oc apply -f argo/apps/PetClinic/PetClinicArgoApp.yml`
 ![Image](./images/petclinic-outofsync.jpg)
@@ -29,6 +30,7 @@ you can use the menu link that was added by the operator on top of OCP console\
 ![Image](./images/petclinic-sync.jpg)
 - find the route in the new namespace and test the application\
 ![Image](./images/petclinic.jpg)
+
 ## Challenges
 secrets managements\
 order dependent deployments\
