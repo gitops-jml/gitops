@@ -17,11 +17,12 @@ you can use the menu link that was added by the operator on top of OCP console\
 - clone the current repository
 ### Configuring OCP Console
 TBD
-### Configuring rook-ceph storage
-- look at [cephApp.yml](./argo/config/ceph/cephApp.yml) : this file defines a Application CRD for ArgoCD, that will use the content of https://github.ibm.com/jm-lafont/gitops/infra/ceph folder (yaml manifests) to create and synchronize resources in the current OCP cluster
+### Adding rook-ceph storage to the cluster
+- look at [cephApp.yml](./argo/config/ceph/cephApp.yml): this file defines a Application CRD for ArgoCD, that will use the content of https://github.ibm.com/jm-lafont/gitops/infra/ceph folder (yaml manifests) to create and synchronize resources in the current OCP cluster
 - create a new ArcoCD application from a yaml file\
 `cd gitops; oc apply -f argo/ceph/cephApp.yml`
-- 
+- sync the new application
+- wait for the sync to terminate and observe the new resources from the console
 ### Deploy a simple application (petclinic)
 - create a new ArcoCD application\
 `cd gitops; oc apply -f argo/apps/PetClinic/PetClinicArgoApp.yml`
