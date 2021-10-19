@@ -6,14 +6,21 @@ Openshift GitOps is built on Argo CD (CNCF project)
 Openshift GitOps isavailable as an operator (Red Hat OpenShift GitOps) in the OperatorHub\
 Installing the operator will create a default ArgoCD instance and a default project\
 ![Image](./images/init.jpg)\
-obtain ArgoCD console pasword:\
+- obtain ArgoCD console pasword:\
 `oc extract secret/openshift-gitops-cluster -n openshift-gitops --to=-`
-
+- open the ArgoCD console in your browser:\
+you can use the menu link that was added by the operator on top of OCP console\
+![Image](./images/ArgoCDlink.jpg)\
+## concepts
 ## Simple use cases
+### pre-req
+- clone the current repository
 ### configuring OCP Console
-- clone current repository
-- create a new ArcoCD application
+### configuring rook-ceph storage
+- look at [cephApp.yml](./argo/ceph/cephApp.yml) : this file defines a Application CRD for ArgoCD, that will use the content of https://github.ibm.com/jm-lafont/gitops/infra/ceph folder (yaml manifests) to create and synchronize resources in the current OCP cluster
+- create a new ArcoCD application from a yaml file
 `cd gitops; oc apply -f argo/ceph/cephApp.yml`
+- 
 ### deploy a simple application (petclinic)
 - create a new ArcoCD application\
 `cd gitops; oc apply -f argo/apps/PetClinic/PetClinicArgoApp.yml`
