@@ -1,8 +1,8 @@
 # GitOps exploration
-GitOps is a declarative approach to **continuous delivery** that uses Git as the single source of truth for everything (infrastructure and application)
+GitOps is a declarative approach to **continuous delivery** that uses Git as the single source of truth for everything (infrastructure and application)\
 ![Image](./images/DeliveryModel.png)
 ## About Openshift GitOps
-Openshift GitOps is built on **Argo CD** (CNCF project)
+**Openshift GitOps** is RedHat implemetation framework for GitOps, built on **Argo CD** (CNCF project)
 ## Installing Openshift GitOps
 Openshift GitOps is available as an operator (**Red Hat OpenShift GitOps**) in the OperatorHub\
 Installing the operator will create a default ArgoCD instance and a default project\
@@ -12,7 +12,9 @@ Installing the operator will create a default ArgoCD instance and a default proj
 - open the ArgoCD console in your browser:\
 you can use the menu link that was added by the operator on top of OCP console\
 ![Image](./images/ArgoCDlink.jpg)
-## Concepts
+## Concepts & Architecture
+- project
+- application
 
 ## Simple use cases
 
