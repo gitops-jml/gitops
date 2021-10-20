@@ -45,7 +45,7 @@ TBD : explain
 - look at  [PetClinicArgoApp.yml](./argo/apps/PetClinic/PetClinicArgoApp.yml) that defines the sources (yaml manifests) and destination (ocp cluster)
 - create a new ArcoCD application from this file\
 `cd gitops; oc apply -f argo/apps/PetClinic/PetClinicArgoApp.yml`
-- look at the new Application in ArgoCD console
+- look at the new Application in ArgoCD console. For this application the Sync mode is automatic so you don't have to use the Sync button
 ![Image](./images/petclinic-outofsync.jpg)
 - wait for the application to sync and watch the resources creation from the ArgoCD console\
 ![Image](./images/petclinic-sync.jpg)
