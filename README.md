@@ -32,13 +32,20 @@ you can use the menu link that was added by the operator on top of OCP console\
 TBD : explain 
 
 ### UC1: Add a link to the OCP Console
+- look at  [cluster-configs.yaml](./argo/config/console/cluster-configs.yaml) that defines the sources (yaml manifests) and destination (ocp cluster)
+- create a new ArcoCD application from this file\
+`cd gitops; oc apply -f argo/config/console/cluster-configs.yaml`
+- look at the new Application in ArgoCD console. It's status should be Out Of Sync, because the target resources don't existe and the synchronization is Manual
 ![Image](./images/ConsoleApp.jpg)
+- sync the application using the Sync button and wait for Synced status. Then verifiy that a new link to ARgoCd documentation is added to the OCP console
+![Image](./images/ConsoleLink.jpg)
 
 
 ### UC2: Deploy a simple application (petclinic)
-- look at  [PetClinicArgoApp.yml](./argo/apps/PetClinicArgoApp.yml) that defines the sources (yaml manifests) and destination (ocp cluster)
+- look at  [PetClinicArgoApp.yml](./argo/apps/PetClinic/PetClinicArgoApp.yml) that defines the sources (yaml manifests) and destination (ocp cluster)
 - create a new ArcoCD application from this file\
 `cd gitops; oc apply -f argo/apps/PetClinic/PetClinicArgoApp.yml`
+- look at the new Application in ArgoCD console
 ![Image](./images/petclinic-outofsync.jpg)
 - wait for the application to sync and watch the resources creation from the ArgoCD console\
 ![Image](./images/petclinic-sync.jpg)
