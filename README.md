@@ -4,7 +4,7 @@ GitOps is a declarative approach to **continuous delivery** that uses Git as the
 
 ## Concepts & Architecture
 Argo CD automates the deployment of the desired application states (yaml,kustomize,helm, ...) in the specified target environments (kubernetes clusters) and keep them synchronized 
-The main concept is the **application** (CRD) that defines the source of the manifests to deploy (path in a Git repositoy), the destination to deploy to (kubernetes cluster namespace) and the sync options
+The main concept is the **application** (CRD) that defines the source of the manifests to deploy (path in a Git repositoy), the destination to deploy to (kubernetes cluster namespace) and the sync options\
 Application can be grouped by **projects**.
 
 ## About Openshift GitOps
@@ -32,7 +32,8 @@ you can use the menu link that was added by the operator on top of OCP console\
 TBD : explain 
 
 ### UC1: Add a link to the OCP Console
-TBD
+![Image](./images/ConsoleApp.jpg)
+
 
 ### UC2: Deploy a simple application (petclinic)
 - look at  [PetClinicArgoApp.yml](./argo/apps/PetClinicArgoApp.yml) that defines the sources (yaml manifests) and destination (ocp cluster)
