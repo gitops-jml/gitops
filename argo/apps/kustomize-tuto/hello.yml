@@ -11,7 +11,7 @@ spec:
   source:
     directory:
       recurse: true
-    path: apps/kustomize-tuto/
+    path: apps/kustomize-tuto/overlays/staging
     repoURL: https://github.ibm.com/jm-lafont/gitops.git
   syncPolicy:
     automated:
