@@ -4,7 +4,7 @@ commonLabels:
   org: acmeCorporation
 commonAnnotations:
   note: Hello, I am staging!
-base:
+resources:
 - ../../base
 patchesStrategicMerge:
 - map.yaml
