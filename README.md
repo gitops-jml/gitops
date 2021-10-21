@@ -61,7 +61,8 @@ TBD : explain
 - sync the new application
 - wait for the sync to terminate and observe the new resources from the console
 
-### Deploy in a new namespace, by avoiding yaml duplication (Kustomize)
+### Deploy in a several environments, avoiding yaml duplication (Kustomize)
+
 
 ### IBM implementation for deploying Cloud Paks
 
