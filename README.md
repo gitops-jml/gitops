@@ -1,5 +1,6 @@
 # GitOps exploration
-GitOps is a declarative approach to **continuous delivery** that uses Git as the single source of truth for everything (infrastructure and application)\
+GitOps is a declarative approach to **continuous delivery** that uses Git as the single source of truth for everything (infrastructure and application)
+
 ![Image](./images/DeliveryModel.png)
 
 ## Concepts & Architecture
@@ -35,9 +36,9 @@ TBD : explain
 - look at  [cluster-configs.yaml](./argo/config/console/cluster-configs.yaml) that defines the sources (yaml manifests) and destination (ocp cluster)
 - create a new ArcoCD application from this file\
 `cd gitops; oc apply -f argo/config/console/cluster-configs.yaml`
-- look at the new Application in ArgoCD console. It's status should be Out Of Sync, because the target resources don't existe and the synchronization is Manual
+- look at the new Application in ArgoCD console. It's status should be Out Of Sync, because the target resources don't exist yet and the synchronization mode is Manual
 ![Image](./images/ConsoleApp.jpg)
-- sync the application using the Sync button and wait for Synced status. Then verifiy that a new link to ARgoCd documentation is added to the OCP console
+- sync the application using the Sync button and wait for the Synced status. Then verifiy that a new link to ARgoCd documentation is added to the OCP console
 ![Image](./images/ConsoleLink.jpg)
 
 
