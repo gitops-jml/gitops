@@ -9,11 +9,10 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    directory:
-      recurse: true
-    path: YAML
+    path: ArgoCD
     repoURL: https://github.com/jmlafont/jpetstore.git
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    targetRevision: dev
+#  syncPolicy:
+#    automated:
+#      prune: true
+#      selfHeal: true

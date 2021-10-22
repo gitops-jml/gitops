@@ -9,10 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    directory:
-      recurse: true
-    kustomize:
-    path: apps/kustomize-tuto/overlays/staging
+    path: apps/kustomize-tuto/overlays/production
     repoURL: https://github.ibm.com/jm-lafont/gitops.git
   syncPolicy:
     automated:
