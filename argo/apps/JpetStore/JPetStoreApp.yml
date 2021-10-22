@@ -1,15 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-jpetstore
+  name: app-jpetstore-dev
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: jpetstore
+    namespace: jpetstore-dev
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: ArgoCD
+    path: ArgoCD/base
     repoURL: https://github.com/jmlafont/jpetstore.git
     targetRevision: dev
 #  syncPolicy:
