@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cluster-configs
+  name: console-configs
   namespace: openshift-gitops
 spec:
   destination:
@@ -11,6 +11,6 @@ spec:
   source:
     directory:
       recurse: true
-    path: config/console
+    path: config-def/console
     repoURL: https://github.ibm.com/jm-lafont/gitops
     targetRevision: HEAD

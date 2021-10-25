@@ -11,7 +11,7 @@ spec:
   source:
     directory:
       recurse: true
-    path: apps/petclinic
+    path: apps-def/petclinic
     repoURL: https://github.ibm.com/jm-lafont/gitops.git
   syncPolicy:
     automated:
