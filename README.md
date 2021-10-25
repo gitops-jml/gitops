@@ -1,10 +1,10 @@
-# GitOps exploration
+GitOps exploration
 =====================
 GitOps is a declarative approach to **continuous delivery** that uses Git as the single source of truth for everything (infrastructure and application)
 
 ![Image](./images/DeliveryModel.png)
 
-## Concepts & Architecture
+Concepts & Architecture
 ---------------------------
 Argo CD automates the deployment of the desired application states (yaml,kustomize,helm, ...) in the specified target environments (kubernetes clusters) and keep them synchronized 
 
@@ -12,12 +12,12 @@ The main concept is the **application** (CRD) that defines the source of the man
 
 Application can be grouped by **projects**.
 
-## About Openshift GitOps
+About Openshift GitOps
 ---------------------------
 **Openshift GitOps** is RedHat implementation framework for GitOps, built on **Argo CD** (CNCF project)
 
 
-## Installing Openshift GitOps
+Installing Openshift GitOps
 ---------------------------
 - Openshift GitOps is available as an operator (**Red Hat OpenShift GitOps**) in the OperatorHub
 
@@ -35,7 +35,7 @@ Application can be grouped by **projects**.
 
 ![Image](./images/ArgoCDlink.jpg)
 
-## Simple use cases
+Simple use cases
 ---------------------------
 
 ### Pre-req
@@ -45,10 +45,10 @@ Application can be grouped by **projects**.
   - apps folders contain everything needed to deploy applications
 
 ### UC1: Add a link to the OCP Console
-- look at [cluster-configs.yaml](./argo/config/console/cluster-configs.yaml) that defines the sources (yaml manifests) and destination (ocp cluster)
+- look at [cluster-configs.yaml](./argo-crd/config/console/cluster-configs.yaml) that defines the sources (yaml manifests) and destination (ocp cluster)
 
 - create a new ArcoCD application from this file\
-`cd gitops; oc apply -f argo/config/console/cluster-configs.yaml`
+`cd gitops; oc apply -f argo-crd/config/console/cluster-configs.yaml`
 
 - look at the new Application in ArgoCD console.\
 It's status should be Out Of Sync, because the target resources don't exist yet and the synchronization mode is Manual
@@ -62,10 +62,10 @@ Then verifiy that a new link to ARgoCd documentation is added to the OCP console
 
 
 ### UC2: Deploy a simple application (petclinic)
-- look at  [PetClinicArgoApp.yml](./argo/apps/PetClinic/PetClinicArgoApp.yml) that defines the sources (yaml manifests) and destination (ocp cluster)
+- look at  [PetClinicArgoApp.yml](./argo/apps-def/PetClinic/PetClinicArgoApp.yml) that defines the sources (yaml manifests) and destination (ocp cluster)
 
 - create a new ArcoCD application from this file\
-`cd gitops; oc apply -f argo/apps/PetClinic/PetClinicArgoApp.yml`
+`cd gitops; oc apply -f argo/apps-def/PetClinic/PetClinicArgoApp.yml`
 
 - look at the new Application in ArgoCD console.\
 For this application the Sync mode is automatic so you don't have to use the Sync button
@@ -83,11 +83,11 @@ For this application the Sync mode is automatic so you don't have to use the Syn
 - try to scale the application and observe that ArgoCD synchronize the application back to the stage defined in Git
 
 ### UC3: Add rook-ceph storage to the cluster
-- look at [cephApp.yml](./argo/config/ceph/cephApp.yml):\
-this file defines a Application CRD for ArgoCD, that will use the content of  [../infra/ceph](./infra/ceph) folder (yaml manifests) to create and synchronize resources in the current OCP cluster
+- look at [cephApp.yml](./argo-crd/config/ceph/cephApp.yml):\
+this file defines a Application CRD for ArgoCD, that will use the content of ./argo-crd/config/ceph/ folder (yaml manifests) to create and synchronize resources in the current OCP cluster
 
 - create a new ArcoCD application from a yaml file\
-`cd gitops; oc apply -f argo/ceph/cephApp.yml`
+`cd gitops; oc apply -f argo-crd/ceph/cephApp.yml`
 
 - sync the new application
 
@@ -98,7 +98,8 @@ this file defines a Application CRD for ArgoCD, that will use the content of  [.
 
 ### IBM implementation for deploying Cloud Paks
 
-## Challenges
+Challenges
+----------
 secrets managements\
 security\
 order dependent deployments\
