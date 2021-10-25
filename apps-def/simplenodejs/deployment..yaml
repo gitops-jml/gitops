@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: simplenodeapp
-  namespace: simplenodeapp
   labels:
     app: simplenodeapp
 spec:
