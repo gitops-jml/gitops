@@ -47,10 +47,10 @@ Pre-req
 
 UC1: Add a link to the OCP Console
 ---------------------------
-- look at [cluster-configs.yaml](./argo-crd/config/console/cluster-configs.yaml) that defines the sources (yaml manifests) and destination (ocp cluster)
+- look at [cluster-configs.yaml](./argo-crd/config/console/console-link.yaml) that defines the sources (yaml manifests) and destination (ocp cluster)
 
 - create a new ArcoCD application from this file\
-`cd gitops; oc apply -f argo-crd/config/console/cluster-configs.yaml`
+`cd gitops; oc apply -f argo-crd/config/console/console-link.yaml`
 
 - look at the new Application in ArgoCD console.\
 It's status should be Out Of Sync, because the target resources don't exist yet and the synchronization mode is Manual
