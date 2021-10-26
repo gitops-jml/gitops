@@ -1,5 +1,26 @@
 commonLabels:
   env: dev
+configMapGenerator:
+- name: env-cm
+  literals:
+  - ENV=DEV
+patches: 
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: simplenodeapp
+      spec:
+        template:
+          spec:
+            containers:
+              - name: simplenodeapp
+                env:
+                  - name: ENV
+                    valueFrom:
+                      configMapKeyRef:
+                        name: cm-env
+                        key: ENV
 resources:
 - ../base
 - route.yaml
