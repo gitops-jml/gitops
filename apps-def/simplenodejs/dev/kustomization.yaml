@@ -1,3 +1,5 @@
+commonLabels:
+  env: dev
 resources:
-- ../base/deployment.yaml
-- ../base/service.yaml
+- ../base
+- route.yaml
