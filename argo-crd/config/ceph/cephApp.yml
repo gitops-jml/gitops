@@ -11,6 +11,6 @@ spec:
   source:
     directory:
       recurse: true
-    path: config/ceph
+    path: config-def/ceph
     repoURL: https://github.ibm.com/jm-lafont/gitops
     targetRevision: HEAD
