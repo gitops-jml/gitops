@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: ArgoCD/base
+    path: ARGOCD/base
     repoURL: https://github.com/jmlafont/jpetstore.git
     targetRevision: HEAD
 #  syncPolicy:
