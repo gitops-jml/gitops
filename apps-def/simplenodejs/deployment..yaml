@@ -19,3 +19,4 @@ spec:
         image: quay.io/jmlafont/simplenodejs:1.0
         ports:
         - containerPort: 8080
+        imagePullPolicy: Always
