@@ -11,7 +11,7 @@ spec:
   source:
     path: ArgoCD/base
     repoURL: https://github.com/jmlafont/jpetstore.git
-    targetRevision: dev
+    targetRevision: HEAD
 #  syncPolicy:
 #    automated:
 #      prune: true
