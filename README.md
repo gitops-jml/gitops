@@ -47,7 +47,7 @@ Pre-req
 
 UC1: Add a link to the OCP Console
 ---------------------------
-- look at [conole-link.yaml](./argo-crd/config/console/console-link.yaml) that defines the sources (yaml manifests) and destination (ocp cluster)
+- look at [console-link.yaml](./argo-crd/config/console/console-link.yaml) that defines the sources (yaml manifests) and destination (ocp cluster)
 
 - create a new ArcoCD application from this file\
 `cd gitops; oc apply -f argo-crd/config/console/console-link.yaml`
