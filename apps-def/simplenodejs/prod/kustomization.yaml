@@ -20,7 +20,7 @@ patches:
                     valueFrom:
                       configMapKeyRef:
                         name: env-cm
-                        key: PROD
+                        key: ENV
 resources:
 - ../base
 - route.yaml
