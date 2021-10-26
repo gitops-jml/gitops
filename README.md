@@ -97,9 +97,26 @@ this file defines a Application CRD for ArgoCD, that will use the content of ./a
 
 - wait for the sync to terminate and observe the new resources from the console
 
-Deploy in a several environments, avoiding yaml duplication (Kustomize)
+UC4: Deploy in a several environments, avoiding yaml duplication (Kustomize)
 ---------------------------
 
+The **./apps-def/singlenodejs** folder describe a kustomize architecture for a small nodejs app deployed in two different environments
+
+![Image](./images/simplenodejs-tree.jpg)
+
+- the base folder describes everything common
+- the dev en prod folders define the specificities (a label en=dev/prod and a configmap )
+
+The ./argo-crd/apps/simplenodejs folder describes two ArgoCD application, one for DEV and the other for PROD
+
+- use `apply -f argo-crd/apps/simplenodejs/simplenodejsAppDEV.yaml` and `apply -f argo-crd/apps/simplenodejs/simplenodejsAppPROD.yaml` to create the application
+
+- use `oc get route -n simplenodejs-dev` and `oc get route -n simplenodejs-prod` to find the route
+
+- use the route to validate the application. You shoud see
+```Hello !
+You've hit simplenodeapp-87957b46b-j9md2environment: DEV
+```
 
 IBM implementation for deploying Cloud Paks
 ---------------------------
@@ -107,6 +124,6 @@ IBM implementation for deploying Cloud Paks
 Challenges
 =====================
 secrets managements\
-security\
+security\b
 order dependent deployments\
 objects manualy added and not described in app are not sync
