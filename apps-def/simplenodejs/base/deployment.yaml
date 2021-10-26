@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: simplenodeapp
-        image: quay.io/jmlafont/simplenodejs:1.0
+        image: quay.io/jmlafont/simplenodejs:1.1
         ports:
         - containerPort: 8080
         imagePullPolicy: Always
