@@ -2,13 +2,13 @@ GitOps exploration
 =====================
 GitOps is a declarative approach to **continuous delivery** that uses Git as the single source of truth for everything (infrastructure and application)
 
-![Image](./images/DeliveryModel.png)
+![Image](./images/DeliveryModel.jpg)
 
 Concepts & Architecture
 =====================
 Argo CD automates the deployment of the desired application states (yaml,kustomize,helm, ...) in the specified target environments (kubernetes clusters) and keep them synchronized 
 
-The main concept is the **application** (CRD) that defines the source of the manifests to deploy (path in a Git repositoy), the destination to deploy to (kubernetes cluster namespace) and the sync options\
+The main concept is the **application** (CRD) that defines the source of the manifests to deploy (path in a Git repositoy), the destination to deploy to (kubernetes cluster namespace) and the sync options
 
 Application can be grouped by **projects**.
 
