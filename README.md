@@ -131,9 +131,10 @@ using a specic instance of ArgoCD with specific controls and specific health che
 
 IBM implementation for configuring Software (APIC)
 ---------------------------
-with openshift pipelines (tekton) because configuration objects are not kubernetes objects\
+with openshift pipelines (tekton), because configuration objects are not kubernetes objects and can't be managed by ArgoCD\
 see :\
 [APIC Tutorial](https://pages.github.ibm.com/cloudpakbringup/production-deployment-guides/guides/cp4i/apic/overview/overview/)
+
 Challenges
 =====================
 secrets managements\
