@@ -127,6 +127,7 @@ You've hit simplenodeapp-87957b46b-j9md2environment: PROD
 
 IBM implementation for deploying Software (APIC)
 ---------------------------
+using a specic instance of ArgoCD with specific controls and specific health checks
 
 IBM implementation for configuring Software (APIC)
 ---------------------------
