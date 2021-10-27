@@ -125,8 +125,12 @@ or
 You've hit simplenodeapp-87957b46b-j9md2environment: PROD
 ```
 
-IBM implementation for deploying Cloud Paks
+IBM implementation for deploying Software (APIC)
 ---------------------------
+
+IBM implementation for configuring Software (APIC)
+---------------------------
+with openshift pipelines (tekton) because configuration objects are not kubernetes objects
 
 Challenges
 =====================
