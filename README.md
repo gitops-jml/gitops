@@ -41,6 +41,9 @@ Simple use cases
 Pre-req
 ---------------------------
 - fork and then clone the current repository in your environment
+
+![Image](./images/tree.jpg)
+
   - argo folders contain the descriptions of the various Argo CRD (applications and projects)
   - config folders contain everything related to OCP platform configuration
   - apps folders contain everything needed to deploy applications
