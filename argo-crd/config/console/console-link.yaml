@@ -11,6 +11,6 @@ spec:
   source:
     directory:
       recurse: true
-    path: config-def/console
+    path: argo-crd/config/consol/console
     repoURL: https://github.ibm.com/jm-lafont/gitops
     targetRevision: HEAD
