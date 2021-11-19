@@ -94,7 +94,7 @@ UC3: Add rook-ceph storage to the cluster
 this file defines a Application CRD for ArgoCD, that will use the content of ./argo-crd/config/ceph/ folder (yaml manifests) to create and synchronize resources in the current OCP cluster
 
 - create a new ArcoCD application from a yaml file\
-`cd gitops; oc apply -f argo-crd/ceph/cephApp.yml`
+`cd gitops; oc apply -f argo-crd/config/ceph/cephApp.yml`
 
 - sync the new application
 
