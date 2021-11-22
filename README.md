@@ -128,15 +128,11 @@ or
 You've hit simplenodeapp-87957b46b-j9md2environment: PROD
 ```
 
-IBM implementation for deploying Software (APIC)
+UC5: IBM implementation for deploying Software (APIC) with ArgoCD and configuring it with Tekton
 ---------------------------
 using a specic instance of ArgoCD with specific controls and specific health checks
 
-IBM implementation for configuring Software (APIC)
----------------------------
-with openshift pipelines (tekton), because configuration objects are not kubernetes objects and can't be managed by ArgoCD\
-see :\
-[APIC Tutorial](https://pages.github.ibm.com/cloudpakbringup/production-deployment-guides/guides/cp4i/apic/overview/overview/)
+[APIC Tutorial](https://production-gitops.dev/guides/cp4i/apic/overview/overview/)
 
 Challenges
 =====================
