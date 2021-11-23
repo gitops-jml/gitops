@@ -12,5 +12,5 @@ spec:
     directory:
       recurse: true
     path: config-def/console
-    repoURL: https://github.ibm.com/jm-lafont/gitops
+    repoURL: https://github.com/gitops-jml/gitops
     targetRevision: HEAD
