@@ -68,10 +68,10 @@ Then verifiy that a new link to ARgoCd documentation is added to the OCP console
 
 UC2: Deploy a simple application (petclinic)
 ---------------------------
-- look at  [PetClinicArgoApp.yml](./argo/apps-def/PetClinic/PetClinicArgoApp.yml) that defines the sources (yaml manifests) and destination (ocp cluster)
+- look at  [PetClinicArgoApp.yaml](./argo/apps-def/PetClinic/PetClinicArgoApp.yaml) that defines the sources (yaml manifests) and destination (ocp cluster)
 
 - create a new ArcoCD application from this file\
-`cd gitops; oc apply -f argo/apps-def/PetClinic/PetClinicArgoApp.yml`
+`cd gitops; oc apply -f argo/apps-def/PetClinic/PetClinicArgoApp.yaml`
 
 - look at the new Application in ArgoCD console.\
 For this application the Sync mode is automatic so you don't have to use the Sync button
@@ -90,11 +90,11 @@ For this application the Sync mode is automatic so you don't have to use the Syn
 
 UC3: Add rook-ceph storage to the cluster
 ---------------------------
-- look at [cephApp.yml](./argo-crd/config/ceph/cephApp.yml):\
+- look at [cephApp.yaml](./argo-crd/config/ceph/cephApp.yaml):\
 this file defines a Application CRD for ArgoCD, that will use the content of ./argo-crd/config/ceph/ folder (yaml manifests) to create and synchronize resources in the current OCP cluster
 
 - create a new ArcoCD application from a yaml file\
-`cd gitops; oc apply -f argo-crd/config/ceph/cephApp.yml`
+`cd gitops; oc apply -f argo-crd/config/ceph/cephApp.yaml`
 
 - sync the new application
 
