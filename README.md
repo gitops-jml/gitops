@@ -75,7 +75,7 @@ UC2: Deploy a simple application (petclinic)
 - look at  [PetClinicArgoApp.yaml](./argo-crd/apps/PetClinic/PetClinicArgoApp.yaml) that defines the sources (yaml manifests) and destination (ocp cluster and namespace)
 
 - create a new ArcoCD application from this file\
-`cd gitops-with-argocd; oc apply -f argo/apps-def/PetClinic/PetClinicArgoApp.yaml`
+`cd gitops-with-argocd; oc apply -f argo-crd/apps/PetClinic/PetClinicArgoApp.yaml`
 
 - look at the new Application in ArgoCD console.\
 For this application the Sync mode is automatic so you don't have to use the Sync button
@@ -92,10 +92,10 @@ For this application the Sync mode is automatic so you don't have to use the Syn
 
 - try to scale the application and observe that ArgoCD synchronize the application back to the stage defined in Git
 
-UC3: Add rook-ceph storage to the cluster
+UC3: Add rook-ceph storage to the cluster ( NEED TO BE FIXED )
 ---------------------------
 - look at [cephApp.yaml](./argo-crd/config/ceph/cephApp.yaml):\
-this file defines a Application CRD for ArgoCD, that will use the content of ./argo-crd/config/ceph/ folder (yaml manifests) to create and synchronize resources in the current OCP cluster
+this file defines an Application CRD for ArgoCD, needed to deploy rook-ceph
 
 - create a new ArcoCD application from a yaml file\
 `cd gitops; oc apply -f argo-crd/config/ceph/cephApp.yaml`
@@ -107,7 +107,11 @@ this file defines a Application CRD for ArgoCD, that will use the content of ./a
 UC4: Deploy in a several environments, avoiding yaml duplication (Kustomize)
 ---------------------------
 
-The **./apps-def/singlenodejs** folder describe a kustomize architecture for a small nodejs app deployed in two different environments
+When you have to deploy the same application to separate clusters, you will have to customize the yaml manifests depending on the target.
+
+**kustomize** is a way to do this while limitin the duplication of files.
+
+[apps-def\simplenodejs](./apps-def\simplenodejs) folder is an example of a kustomize architecture for a small nodejs app deployed in two different environments
 
 ![Image](./images/simplenodejs-tree.jpg)
 
