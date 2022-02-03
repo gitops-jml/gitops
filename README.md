@@ -111,7 +111,7 @@ When you have to deploy the same application to separate clusters, you will have
 
 **kustomize** is a way to do this while limitin the duplication of files.
 
-[apps-def\simplenodejs](./apps-def\simplenodejs) folder is an example of a kustomize architecture for a small nodejs app deployed in two different environments
+[apps-def\simplenodejs](./apps-def/simplenodejs) folder is an example of a kustomize architecture for a small nodejs app deployed in two different environments
 
 ![Image](./images/simplenodejs-tree.jpg)
 
