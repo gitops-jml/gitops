@@ -120,7 +120,7 @@ When you have to deploy the same application to separate clusters, you will have
 
 The [argo-crd/apps/simplenodejs](./argo-crd/apps/simplenodejs) folder describes two ArgoCD applications definitions, one for DEV and the other for PROD
 
-- use `apply -f argo-crd/apps/simplenodejs/simplenodejsAppDEV.yaml` and `apply -f argo-crd/apps/simplenodejs/simplenodejsAppPROD.yaml` to create the ArgoCD applications
+- use `oc apply -f argo-crd/apps/simplenodejs/simplenodejsAppDEV.yaml` and `oc apply -f argo-crd/apps/simplenodejs/simplenodejsAppPROD.yaml` to create the ArgoCD applications
 
 - synchronize the application using ArgoCD console
 
