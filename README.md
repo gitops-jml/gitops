@@ -4,17 +4,19 @@ GitOps is a declarative approach to **continuous delivery** that uses Git as the
 
 ![Image](./images/DeliveryModel.jpg)
 
-Concepts & Architecture
-=====================
-Argo CD automates the deployment of the desired application states (yaml,kustomize,helm, ...) in the specified target environments (kubernetes clusters) and keep them synchronized 
-
-The main concept is the **application** (CRD) that defines the source of the manifests to deploy (path in a Git repositoy), the destination to deploy to (kubernetes cluster namespace) and the sync options
-
-Application can be grouped by **projects**.
+![Image](./images/gitops.png)
 
 About Openshift GitOps
 =====================
 **Openshift GitOps** is RedHat implementation framework for GitOps, built on **Argo CD** (CNCF project)
+
+Concepts & Architecture
+=====================
+Argo CD automates the deployment of the desired application states defined as manifests (yaml,kustomize,helm, ...) to the specified target environments (kubernetes clusters) and keep them synchronized 
+
+The main concept is the **application** (CRD) that defines the source of the manifests to deploy (path in a Git repositoy), the destination to deploy to (kubernetes cluster namespace) and the sync options (manual or automatic)
+
+Application can be grouped by **projects**.
 
 
 Installing Openshift GitOps
@@ -23,7 +25,7 @@ Installing Openshift GitOps
 
 ![Image](./images/Operator.jpg)
 
-- Installing the operator will create a default ArgoCD instance and a default project in the openshift-gitops namespace.
+- Installing the operator will create a default ArgoCD instance and a default project in the **openshift-gitops namespace.**
 
 ![Image](./images/init.jpg)
 
