@@ -118,7 +118,7 @@ When you have to deploy the same application to separate clusters, you will have
 - the base folder describes everything common
 - the dev and prod folders define the specificities (a label en=dev/prod and a configmap defining an environment variable)
 
-The **./argo-crd/apps/simplenodejs** folder describes two ArgoCD application, one for DEV and the other for PROD
+The [argo-crd/apps/simplenodejs](./argo-crd/apps/simplenodejs) folder describes two ArgoCD applications definitions, one for DEV and the other for PROD
 
 - use `apply -f argo-crd/apps/simplenodejs/simplenodejsAppDEV.yaml` and `apply -f argo-crd/apps/simplenodejs/simplenodejsAppPROD.yaml` to create the ArgoCD applications
 
