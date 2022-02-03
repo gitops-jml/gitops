@@ -52,10 +52,12 @@ Pre-req
 
 UC1: Add a link to the OCP Console
 ---------------------------
-- look at [console-link.yaml](./argo-crd/config/console/console-link.yaml) that defines the sources (yaml manifests) and destination (ocp cluster)
+- look at [console-link.yaml](./argo-crd/config/console/console-link.yaml) that what to deploy (yaml manifests) and where (ocp cluster and namespace)
+
+![Image](./images/uc1.jpg)
 
 - create a new ArcoCD application from this file\
-`cd gitops; oc apply -f argo-crd/config/console/console-link.yaml`
+`cd gitops-with-argocd; oc apply -f argo-crd/config/console/console-link.yaml`
 
 - look at the new Application in ArgoCD console.\
 It's status should be Out Of Sync, because the target resources don't exist yet and the synchronization mode is Manual
@@ -73,7 +75,7 @@ UC2: Deploy a simple application (petclinic)
 - look at  [PetClinicArgoApp.yaml](./argo/apps-def/PetClinic/PetClinicArgoApp.yaml) that defines the sources (yaml manifests) and destination (ocp cluster)
 
 - create a new ArcoCD application from this file\
-`cd gitops; oc apply -f argo/apps-def/PetClinic/PetClinicArgoApp.yaml`
+`cd gitops-with-argocd; oc apply -f argo/apps-def/PetClinic/PetClinicArgoApp.yaml`
 
 - look at the new Application in ArgoCD console.\
 For this application the Sync mode is automatic so you don't have to use the Sync button
