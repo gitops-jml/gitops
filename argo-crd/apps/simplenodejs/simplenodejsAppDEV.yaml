@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: apps-def/simplenodejs/dev
-    repoURL: https://github.ibm.com/jm-lafont/gitops.git
+    repoURL: https://github.com/gitops-jml/gitops-with-argocd.git
   syncPolicy:
     automated:
       prune: true
