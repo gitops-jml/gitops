@@ -116,7 +116,7 @@ When you have to deploy the same application to separate clusters, you will have
 ![Image](./images/simplenodejs-tree.jpg)
 
 - the base folder describes everything common
-- the dev and prod folders define the specificities (a label en=dev/prod and a configmap defining an environment variable)
+- the dev and prod folders define the specificities (a label en=dev/prod, a configmap defining an environment variable, a namespace and a route)
 
 The [argo-crd/apps/simplenodejs](./argo-crd/apps/simplenodejs) folder describes two ArgoCD applications definitions, one for DEV and the other for PROD
 
