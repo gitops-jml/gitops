@@ -25,3 +25,4 @@ resources:
 - ../base
 - route.yaml
 - namespace.yaml
+- role-binding.yaml
