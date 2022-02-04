@@ -1,8 +1,8 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: simplenodejs-dev-role-binding
-  namespace: simplenodejs-dev
+  name: simplenodejs-prod-role-binding
+  namespace: simplenodejs-prod
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
