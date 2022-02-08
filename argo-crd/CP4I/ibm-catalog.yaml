@@ -6,9 +6,6 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    namespace: default
-    server: https://kubernetes.default.svc
   project: cp4i
   source:
     repoURL: 'https://github.com/gitops-jml/gitops-with-argocd.git'
