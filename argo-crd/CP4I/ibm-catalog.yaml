@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: 'https://github.com/gitops-jml/gitops-with-argocd.git'
     path: apps-def/CP4I/ibm-catalog
-    targetRevision: main
+    targetRevision: master
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
