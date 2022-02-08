@@ -1,12 +1,23 @@
-project: cp4i
-source:
-  repoURL: 'https://github.com/gitops-jml/gitops-with-argocd.git'
-  path: apps-def/CP4I/ibm-catalogs
-  targetRevision: main
-destination:
-  server: 'https://kubernetes.default.svc'
-  namespace: default
-syncPolicy:
-  automated:
-    prune: true
-    selfHeal: true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ibm-catalogs
+  namespace: openshift-gitops
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: cp4i
+  source:
+    repoURL: 'https://github.com/gitops-jml/gitops-with-argocd.git'
+    path: apps-def/CP4I/ibm-catalog
+    targetRevision: main
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
