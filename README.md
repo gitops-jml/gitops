@@ -140,7 +140,7 @@ UC5: IBM implementation for deploying Software (APIC) with ArgoCD and configurin
 ---------------------------
 using a specic instance of ArgoCD with specific controls and specific health checks
 
-[APIC Tutorial](https://production-gitops.dev/guides/cp4i/apic/overview/overview/)
+[APIC Tutorial](https://ibm.github.io/production-gitops/guides/cp4i/apic/overview/overview/#overview)
 
 Challenges
 =====================
