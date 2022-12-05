@@ -92,17 +92,24 @@ For this application the Sync mode is automatic so you don't have to use the Syn
 
 - try to scale the application and observe that ArgoCD synchronize the application back to the stage defined in Git
 
-UC3: Add rook-ceph storage to the cluster ( NEED TO BE FIXED )
+UC3: Use sealed secrets to store the secrets ( NEED TO BE COMPETED )
 ---------------------------
-- look at [cephApp.yaml](./argo-crd/config/ceph/cephApp.yaml):\
-this file defines an Application CRD for ArgoCD, needed to deploy rook-ceph
 
-- create a new ArcoCD application from a yaml file\
-`cd gitops; oc apply -f argo-crd/config/ceph/cephApp.yaml`
+![Image](./images/sealed-secrets.png)
 
-- sync the new application
-
-- wait for the sync to terminate and observe the new resources from the console
+- deploy the controler: TBD
+  
+- install kubeseal: 
+```
+wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.19.2/kubeseal-0.19.2-linux-amd64.tar.gz
+tar -xvzf kubeseal-0.19.2-linux-amd64.tar.gz
+sudo install -m 755 kubeseal /usr/local/bin/kubeseal
+```
+- create a secret:
+```
+echo -n mysecretword | kubectl create secret generic mysecret --dry-run=client --from-file=foo=/dev/stdin -o json \
+ | kubeseal  --controller-name sealed-secrets --controller-namespace sealed-secrets -  >mysealedsecret.json
+```
 
 UC4: Deploy in a several environments, avoiding yaml duplication (Kustomize)
 ---------------------------
