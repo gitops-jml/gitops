@@ -105,10 +105,14 @@ wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.19.2/ku
 tar -xvzf kubeseal-0.19.2-linux-amd64.tar.gz
 sudo install -m 755 kubeseal /usr/local/bin/kubeseal
 ```
-- create a secret:
+- create a sealed secret:
 ```
 echo -n mysecretword | kubectl create secret generic mysecret --dry-run=client --from-file=foo=/dev/stdin -o json \
  | kubeseal  --controller-name sealed-secrets --controller-namespace sealed-secrets -  >mysealedsecret.json
+```
+- create a secret from the sealed secret
+```
+oc apply -f mysealedsecret.json
 ```
 
 UC4: Deploy in a several environments, avoiding yaml duplication (Kustomize)
