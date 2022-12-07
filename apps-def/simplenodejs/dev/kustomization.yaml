@@ -8,7 +8,7 @@ configMapGenerator:
 - name: env-cm
   literals:
   - ENV=DEV
-# pathc the base deployment manifest to initialize the env from the config map
+# patch the base deployment manifest to initialize the env from the config map
 #=============================================================================
 patches: 
   - patch: |-
@@ -28,6 +28,8 @@ patches:
                         name: env-cm
                         key: ENV
 
+# patch the namespace name
+#=========================
 patches: 
   - patch: |-
       apiVersion: v1
@@ -35,17 +37,15 @@ patches:
       metadata:
         name: simplenodejs-dev
 
+# patch the route name
+#=====================
 patches: 
   - patch: |-
       apiVersion: route.openshift.io/v1
       kind: Route
       metadata:
         name: simplenodejs-dev
-spec:
-  port:
-    targetPort: 8080
-  to:
-    kind: Service
+
 
 
 resources:
