@@ -142,7 +142,7 @@ foo
 mysecretword
 ```
 
-UC4: Deploy in a several environments, avoiding yaml duplication (Kustomize)
+UC4: Deploy in several environments, avoiding yaml duplication (Kustomize)
 ---------------------------
 
 When you have to deploy the same application to separate clusters, you will have to customize the yaml manifests depending on the target.
