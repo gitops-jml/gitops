@@ -47,9 +47,9 @@ patches:
       metadata:
         name: simplenodejs
       spec:
-      to:
-        kind: Service
-        name: simplenodejs-dev
+        to:
+          kind: Service
+          name: simplenodejs-dev
 
 
 resources:
