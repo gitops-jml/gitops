@@ -2,6 +2,10 @@
 #======================================
 commonLabels:
   env: dev
+
+#add a common suffix to objects
+nameSuffix: "-dev"
+
 # create a config map
 #====================
 configMapGenerator:
@@ -31,4 +35,4 @@ patches:
 
 resources:
 - ../base
-- role-binding.yaml
+
