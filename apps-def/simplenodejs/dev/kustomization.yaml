@@ -25,7 +25,7 @@ patches:
       apiVersion: apps/v1
       kind: Deployment
       metadata:
-        name: simplenodeapp-dev
+        name: simplenodeapp
       spec:
         template:
           spec:
