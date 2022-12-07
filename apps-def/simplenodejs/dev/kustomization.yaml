@@ -47,6 +47,8 @@ patches:
       metadata:
         name: simplenodejs
       spec:
+        port:
+          targetPort: 8080
         to:
           kind: Service
           name: simplenodejs-dev
