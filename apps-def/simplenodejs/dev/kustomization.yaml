@@ -35,7 +35,7 @@ patches:
                   - name: ENV
                     valueFrom:
                       configMapKeyRef:
-                        name: env-cm
+                        name: env-cm-dev
                         key: ENV
 
 # change route target (due to common suffix)
