@@ -140,6 +140,7 @@ type: Opaque
 foo
 # more foo
 mysecretword
+```
 
 UC4: Deploy in a several environments, avoiding yaml duplication (Kustomize)
 ---------------------------
