@@ -181,7 +181,7 @@ using a specic instance of ArgoCD with specific controls and specific health che
 
 Challenges
 =====================
-secrets managements ===> sealed-secrets\
-security\
-order dependent deployments ===> wave\
-objects manualy added and not described in app are not sync
+
+- security\
+- order dependent deployments ===> wave\
+- objects manualy added and not described in app are not sync
