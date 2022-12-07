@@ -44,7 +44,7 @@ patches:
                 - name: ENV
                   valueFrom:
                     configMapKeyRef:
-                    name: env-cm-dev
+                    name: cm-env-dev
                     key: ENV
 resources:
 - ../base
