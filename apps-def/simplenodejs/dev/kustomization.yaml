@@ -1,9 +1,15 @@
+# apply a common label on every objects
+#======================================
 commonLabels:
   env: dev
+# create a config map
+#====================
 configMapGenerator:
 - name: env-cm
   literals:
   - ENV=DEV
+# pathc the base deployment manifest to initialize the env from the config map
+#=============================================================================
 patches: 
   - patch: |-
       apiVersion: apps/v1
@@ -21,8 +27,27 @@ patches:
                       configMapKeyRef:
                         name: env-cm
                         key: ENV
+
+patches: 
+  - patch: |-
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: simplenodejs-dev
+
+patches: 
+  - patch: |-
+      apiVersion: route.openshift.io/v1
+      kind: Route
+      metadata:
+        name: simplenodejs-dev
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+
+
 resources:
 - ../base
-- route.yaml
-- namespace.yaml
 - role-binding.yaml
