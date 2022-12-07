@@ -48,4 +48,5 @@ patches:
                         key: ENV
 resources:
 - ../base
+- config-map.yaml
 
