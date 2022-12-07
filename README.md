@@ -114,6 +114,32 @@ echo -n mysecretword | kubectl create secret generic mysecret --dry-run=client -
 ```
 oc apply -f mysealedsecret.json
 ```
+- check that a new sealed-secret has been created in default namespace, with encrypted data
+```
+oc get sealedsecret/mysecret -o yaml -n default
+```
+- check that a new secret has been created in the default namespace with the value mysecretword (base64 encoded) and teh sealed secret as owner reference
+```
+# oc get secret/mysecret -o yaml -n default
+apiVersion: v1
+data:
+  foo: bXlzZWNyZXR3b3Jk
+kind: Secret
+metadata:
+  name: mysecret
+  namespace: default
+  ownerReferences:
+  - apiVersion: bitnami.com/v1alpha1
+    controller: true
+    kind: SealedSecret
+    name: mysecret
+    uid: aae5fef5-9956-4b6f-831f-ca7b8e89b864
+type: Opaque
+
+# oc extract secret/mysecret -n default
+foo
+# more foo
+mysecretword
 
 UC4: Deploy in a several environments, avoiding yaml duplication (Kustomize)
 ---------------------------
