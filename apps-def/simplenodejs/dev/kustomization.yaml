@@ -28,25 +28,6 @@ patches:
                         name: env-cm
                         key: ENV
 
-# patch the namespace name
-#=========================
-patches: 
-  - patch: |-
-      apiVersion: v1
-      kind: Namespace
-      metadata:
-        name: simplenodejs-dev
-
-# patch the route name
-#=====================
-patches: 
-  - patch: |-
-      apiVersion: route.openshift.io/v1
-      kind: Route
-      metadata:
-        name: simplenodejs-dev
-
-
 
 resources:
 - ../base
