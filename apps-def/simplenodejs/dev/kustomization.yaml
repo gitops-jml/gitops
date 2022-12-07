@@ -38,6 +38,19 @@ patches:
                         name: env-cm
                         key: ENV
 
+# change route target (due to common suffix)
+#=============================================================================
+patches:
+  - patch: |-
+    apiVersion: route.openshift.io/v1
+    kind: Route
+    metadata:
+      name: simplenodejs
+    spec:
+    to:
+      kind: Service
+      name: simplenodejs-dev
+
 
 resources:
 - ../base
