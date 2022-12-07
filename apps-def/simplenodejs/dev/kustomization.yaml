@@ -1,3 +1,4 @@
+  
 # apply a common label on every objects
 #======================================
 commonLabels:
@@ -10,13 +11,6 @@ namespace: simplenodejs-dev
 #add a common suffix to objects
 #==============================
 nameSuffix: "-dev"
-
-# create a config map
-#====================
-configMapGenerator:
-- name: env-cm
-  literals:
-  - ENV=DEV
 
 # change route target (due to common suffix)
 #=============================================================================
