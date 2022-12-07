@@ -3,7 +3,12 @@
 commonLabels:
   env: dev
 
+# same namespace for all objects
+#===============================
+namespace: simplenodejs-dev
+
 #add a common suffix to objects
+#==============================
 nameSuffix: "-dev"
 
 # create a config map
@@ -12,6 +17,7 @@ configMapGenerator:
 - name: env-cm
   literals:
   - ENV=DEV
+
 # patch the base deployment manifest to initialize the env from the config map
 #=============================================================================
 patches: 
