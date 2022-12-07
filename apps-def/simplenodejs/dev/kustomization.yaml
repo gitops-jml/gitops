@@ -49,6 +49,8 @@ patches:
 
 # patch route
 #==================
+patches:
+  - patch: |-
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
