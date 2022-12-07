@@ -14,7 +14,7 @@ nameSuffix: "-dev"
 # create a config map
 #====================
 configMapGenerator:
-- name: env-cm-dev
+- name: env-cm
   literals:
   - ENV=DEV
 
