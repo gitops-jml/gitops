@@ -149,20 +149,24 @@ When you have to deploy the same application to separate clusters, you will have
 
 **kustomize** is a way to do this while limitin the duplication of files.
 
-[apps-def\simplenodejs](./apps-def/simplenodejs) folder is an example of a kustomize architecture for a small nodejs app deployed in two different environments
+We will use a very basic nodejs application to demonstrate. This application is contained in a docker image, and deployed in the cluster using a deployment manifest. When running, the container will display an environment variable initiized from the deployment, and depending on the target environement
+
+![Image](./images/simplenodejs.png)
+
+[apps-def\simplenodejs](./apps-def/simplenodejs) folder is an example of a kustomize architecture for this app deployed in two different environments
 
 ![Image](./images/simplenodejs-tree.jpg)
 
 - the base folder describes everything common
 - the dev and prod folders define the specificities (a label en=dev/prod, a configmap defining an environment variable, a namespace and a route)
 
-The [argo-crd/apps/simplenodejs](./argo-crd/apps/simplenodejs) folder describes two ArgoCD applications definitions, one for DEV and the other for PROD
+The [argo-crd/apps/simplenodejs](./argo-crd/apps/simplenodejs) folder describes two ArgoCD applications and project definitions, one for DEV and the other for PROD
 
-- use `oc apply -f argo-crd/apps/simplenodejs/simplenodejsAppDEV.yaml` and `oc apply -f argo-crd/apps/simplenodejs/simplenodejsAppPROD.yaml` to create the ArgoCD applications
+1. use `oc apply -f argo-crd/apps/simplenodejs/simplenodejsAppDEV.yaml` and `oc apply -f argo-crd/apps/simplenodejs/simplenodejsAppPROD.yaml` to create the ArgoCD applications
 
-- synchronize the application using ArgoCD console
+2. synchronize the application using ArgoCD console
 
-- use `oc get route -n simplenodejs-dev` and `oc get route -n simplenodejs-prod` to find the route
+3. use `oc get route -n simplenodejs-dev` and `oc get route -n simplenodejs-prod` to find the route
 
 - use the route in your browser to validate the application.\
 You shoud see:
