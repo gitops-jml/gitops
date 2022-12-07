@@ -39,13 +39,13 @@ patches:
         template:
           spec:
             containers:
-            - name: simplenodeapp
-              env:
-                - name: ENV
-                  valueFrom:
-                    configMapKeyRef:
-                    name: cm-env-dev
-                    key: ENV
+              - name: simplenodeapp
+                env:
+                  - name: ENV
+                    valueFrom:
+                      configMapKeyRef:
+                      name: cm-env-dev
+                      key: ENV
 resources:
 - ../base
 
