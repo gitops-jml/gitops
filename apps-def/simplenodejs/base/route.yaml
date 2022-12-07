@@ -8,6 +8,6 @@ spec:
     targetPort: 8080
   to:
     kind: Service
-# name be patched by kustomize
+    name: simplenodejs
     weight: 100
   wildcardPolicy: None
