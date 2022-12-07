@@ -14,7 +14,7 @@ nameSuffix: "-dev"
 # create a config map
 #====================
 configMapGenerator:
-- name: env-cm
+- name: env-cm-dev
   literals:
   - ENV=DEV
 
@@ -25,7 +25,7 @@ patches:
       apiVersion: apps/v1
       kind: Deployment
       metadata:
-        name: simplenodeapp
+        name: simplenodeapp-dev
       spec:
         template:
           spec:
