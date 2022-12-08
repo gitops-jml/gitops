@@ -9,6 +9,8 @@
 # ARG3: repository URL ( https://gitlab.com/clarinsgroup/hg/eventing/phoenix-build.git )
 ####################################################################################################################"
 
+nohup kubectl port-forward svc/openshift-gitops-server -n openshift-gitops 8080:443 
+
 #login to argocd
 #==========================================================================================================================================
 argocd login localhost:8080 --username admin --password $(kubectl -n openshift-gitops get secret openshift-gitops-cluster -o jsonpath="{['data']['admin\.password']}" | base64 -d ) --insecure
