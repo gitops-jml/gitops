@@ -27,26 +27,6 @@ patches:
           kind: Service
           name: simplenodejs-dev
 
-# select config map
-#=============================================================================
-patches:
-  - patch: |-
-      apiVersion: apps/v1
-      kind: Deployment
-      metadata:
-        name: simplenodeapp
-      spec:
-        template:
-          spec:
-            containers:
-              - name: simplenodeapp
-                env:
-                  - name: ENV
-                    valueFrom:
-                      configMapKeyRef:
-                        name: cm-env
-                        key: ENV
-
 # patch route
 #==================
 patches:
