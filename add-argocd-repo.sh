@@ -11,7 +11,7 @@
 
 #login to argocd
 #==========================================================================================================================================
-argocd login localhost:8080 --username admin --password $(kubectl -n openshift-gitops get secret openshift-gitops -o jsonpath="{['data']['admin\.password']}" | base64 -d ) --insecure
+argocd login localhost:8080 --username admin --password $(kubectl -n openshift-gitops get secret openshift-gitops-cluster -o jsonpath="{['data']['admin\.password']}" | base64 -d ) --insecure
 
 #add the repository
 #==========================================================================================================================================
