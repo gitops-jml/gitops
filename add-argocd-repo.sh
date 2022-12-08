@@ -5,6 +5,7 @@
 #
 # ARG1: user
 # ARG2: access token for the gitlab repository
+# ARG3: repository URL ( https://gitlab.com/clarinsgroup/hg/eventing/phoenix-build.git )
 ####################################################################################################################"
 
 #login to argocd
@@ -13,6 +14,6 @@ argocd login localhost:8080 --username admin --password $(kubectl -n openshift-g
 
 #add the repository
 #==========================================================================================================================================
-argocd repo add https://gitlab.com/clarinsgroup/hg/eventing/phoenix-build.git  --username $1 --password $2
+argocd repo add $3  --username $1 --password $2
 
 
