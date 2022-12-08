@@ -20,3 +20,9 @@ spec:
           ports:
           - containerPort: 8080
           imagePullPolicy: Always
+          env:
+            - name: ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: cm-env
+                  key: ENV

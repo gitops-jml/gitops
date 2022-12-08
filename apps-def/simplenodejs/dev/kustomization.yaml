@@ -44,7 +44,7 @@ patches:
                   - name: ENV
                     valueFrom:
                       configMapKeyRef:
-                        name: cm-env-dev
+                        name: cm-env
                         key: ENV
 
 # patch route
