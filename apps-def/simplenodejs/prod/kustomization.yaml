@@ -1,28 +1,48 @@
+  
+# apply a common label on every objects
+#======================================
 commonLabels:
   env: prod
-configMapGenerator:
-- name: env-cm
-  literals:
-  - ENV=PROD
-patches: 
+
+# same namespace for all objects
+#===============================
+namespace: simplenodejs-prod
+
+#add a common suffix to objects
+#==============================
+nameSuffix: "-prod"
+
+# change route target (due to common suffix)
+#=============================================================================
+patches:
   - patch: |-
-      apiVersion: apps/v1
-      kind: Deployment
+      apiVersion: route.openshift.io/v1
+      kind: Route
       metadata:
-        name: simplenodeapp
+        name: simplenodejs
       spec:
-        template:
-          spec:
-            containers:
-              - name: simplenodeapp
-                env:
-                  - name: ENV
-                    valueFrom:
-                      configMapKeyRef:
-                        name: env-cm
-                        key: ENV
+        port:
+          targetPort: 8080
+        to:
+          kind: Service
+          name: simplenodejs-prod
+
+# patch route
+#==================
+patches:
+  - patch: |-
+      apiVersion: route.openshift.io/v1
+      kind: Route
+      metadata:
+        name: simplenodejs
+      spec:
+        to:
+          kind: Service
+          name: simplenodejs-prod
+
+
+
 resources:
 - ../base
-- route.yaml
-- namespace.yaml
-- role-binding.yaml
+- config-map.yaml
+
