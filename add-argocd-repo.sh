@@ -3,8 +3,8 @@
 # - already logged to the OCP cluster
 # - argocd CLI available: https://argo-cd.readthedocs.io/en/stable/cli_installation/
 #
-# ARG1: gitlab user
-# ARG2: access token for the gitlab repository
+# ARG1: gitlab user (to use a password) or random string (to use access token)
+# ARG2: pasword or access token for the gitlab repository
 # ARG3: repository URL ( https://gitlab.com/clarinsgroup/hg/eventing/phoenix-deploy.git )
 ####################################################################################################################"
 
