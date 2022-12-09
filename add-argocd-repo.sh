@@ -1,7 +1,6 @@
 ####################################################################################################################"
 # pre-req : 
 # - already logged to the OCP cluster
-# - port forwarding active : kubectl port-forward svc/openshift-gitops-cntk-server -n openshift-gitops 8080:443
 # - argocd CLI available: https://argo-cd.readthedocs.io/en/stable/cli_installation/
 #
 # ARG1: gitlab user
