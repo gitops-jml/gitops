@@ -6,10 +6,10 @@
 #
 # ARG1: gitlab user
 # ARG2: access token for the gitlab repository
-# ARG3: repository URL ( https://gitlab.com/clarinsgroup/hg/eventing/phoenix-build.git )
+# ARG3: repository URL ( https://gitlab.com/clarinsgroup/hg/eventing/phoenix-deploy.git )
 ####################################################################################################################"
 
-nohup kubectl port-forward svc/openshift-gitops-server -n openshift-gitops 8080:443 
+kubectl port-forward svc/openshift-gitops-server -n openshift-gitops 8080:443 &
 
 #login to argocd
 #==========================================================================================================================================
