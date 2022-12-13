@@ -44,11 +44,12 @@ Pre-req
 ---------------------------
 - fork and then clone the current repository in your environment
 
-![Image](./images/tree.jpg)
-
+In this repository:
   - argo folders contain the descriptions of the various Argo CRD (applications and projects)
   - config folders contain everything related to OCP platform configuration
   - apps folders contain everything needed to deploy applications
+  
+![Image](./images/tree.jpg)
 
 UC1: Add a link to the OCP Console
 ---------------------------
