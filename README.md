@@ -44,15 +44,16 @@ Pre-req
 ---------------------------
 - fork and then clone the current repository in your environment
 
-![Image](./images/tree.jpg)
-
+In this repository:
   - argo folders contain the descriptions of the various Argo CRD (applications and projects)
   - config folders contain everything related to OCP platform configuration
   - apps folders contain everything needed to deploy applications
+  
+![Image](./images/tree.jpg)
 
 UC1: Add a link to the OCP Console
 ---------------------------
-- look at [console-link.yaml](./argo-crd/config/console/console-link.yaml) that what to deploy (yaml manifests) and where (ocp cluster and namespace)
+- look at [console-link.yaml](./argo-crd/config/console/console-link.yaml) that describes **what** to deploy (yaml manifests) and **where** (ocp cluster and namespace)
 
 ![Image](./images/uc1.jpg)
 
@@ -187,6 +188,6 @@ using a specic instance of ArgoCD with specific controls and specific health che
 Challenges
 =====================
 
-- security\
-- order dependent deployments ===> wave\
+- security
+- order dependent deployments ===> wave
 - objects manualy added and not described in app are not sync
