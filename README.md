@@ -70,8 +70,16 @@ Then verifiy that a new link to ARgoCd documentation is added to the OCP console
 
 ![Image](./images/ConsoleLink.jpg)
 
+UC2: Add a banner to the OCP Console
+---------------------------
 
-UC2: Deploy a simple application (petclinic)
+- create a new ArcoCD application from this file\
+`cd gitops-with-argocd; oc apply -f argo-crd/config/console-banner/console-banner.yaml`
+
+- look at the new Application in ArgoCD console.\
+  Sync is automatic for this new application. Wait for the synced status and verifiy that a new banner is added to the OCP console
+
+UC3: Deploy a simple application (petclinic)
 ---------------------------
 - look at  [PetClinicArgoApp.yaml](./argo-crd/apps/PetClinic/PetClinicArgoApp.yaml) that defines the sources (yaml manifests) and destination (ocp cluster and namespace)
 
@@ -93,7 +101,7 @@ For this application the Sync mode is automatic so you don't have to use the Syn
 
 - try to scale the application and observe that ArgoCD synchronize the application back to the stage defined in Git
 
-UC3: Use sealed secrets to store the secrets ( NEED TO BE COMPETED )
+UC4: Use sealed secrets to store the secrets ( NEED TO BE COMPETED )
 ---------------------------
 
 ![Image](./images/sealed-secrets.png)
@@ -143,7 +151,7 @@ foo
 mysecretword
 ```
 
-UC4: Deploy in several environments, avoiding yaml duplication (Kustomize)
+UC5: Deploy in several environments, avoiding yaml duplication (Kustomize)
 ---------------------------
 
 When you have to deploy the same application to separate clusters, you will have to customize the yaml manifests depending on the target.
@@ -179,7 +187,7 @@ or
 You've hit simplenodeapp-87957b46b-j9md2environment: PROD
 ```
 
-UC5: IBM implementation for deploying Software (APIC) with ArgoCD and configuring it with Tekton
+UC6: IBM implementation for deploying Software (APIC) with ArgoCD and configuring it with Tekton
 ---------------------------
 using a specic instance of ArgoCD with specific controls and specific health checks
 
