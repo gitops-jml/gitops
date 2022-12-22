@@ -1,0 +1,9 @@
+apiVersion: console.openshift.io/v1
+kind: ConsoleNotification
+metadata:
+  name: banner-gitops
+spec:
+  backgroundColor: red
+  color: '#fff'
+  location: BannerTop
+  text: Cluster operated by GitOps
