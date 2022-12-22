@@ -11,7 +11,7 @@ spec:
   source:
     directory:
       recurse: true
-    path: argo-crd/config/console-banner
+    path: config-def/console-banner
     repoURL: https://github.com/gitops-jml/gitops-with-argocd.git
     targetRevision: master
   syncPolicy:
