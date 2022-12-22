@@ -14,3 +14,7 @@ spec:
     path: argo-crd/config/console-banner
     repoURL: https://github.com/gitops-jml/gitops-with-argocd.git
     targetRevision: master
+  syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true  
