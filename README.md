@@ -101,7 +101,7 @@ For this application the Sync mode is automatic so you don't have to use the Syn
 
 - try to scale the application and observe that ArgoCD synchronize the application back to the stage defined in Git
 
-UC4: Use sealed secrets to store the secrets ( NEED TO BE COMPETED )
+UC4a: Use sealed secrets to store the secrets ( NEED TO BE COMPETED )
 ---------------------------
 
 ![Image](./images/sealed-secrets.png)
@@ -128,6 +128,95 @@ oc apply -f mysealedsecret.json
 oc get sealedsecret/mysecret -o yaml -n default
 ```
 - check that a new secret has been created in the default namespace with the value mysecretword (base64 encoded) and teh sealed secret as owner reference
+```
+# oc get secret/mysecret -o yaml -n default
+apiVersion: v1
+data:
+  foo: bXlzZWNyZXR3b3Jk
+kind: Secret
+metadata:
+  name: mysecret
+  namespace: default
+  ownerReferences:
+  - apiVersion: bitnami.com/v1alpha1
+    controller: true
+    kind: SealedSecret
+    name: mysecret
+    uid: aae5fef5-9956-4b6f-831f-ca7b8e89b864
+type: Opaque
+
+# oc extract secret/mysecret -n default
+foo
+# more foo
+mysecretword
+```
+
+UC4b: Use IBM Secret Manager to store the secrets ( NEED TO BE COMPETED )
+---------------------------
+
+Pre-requisites:
+- create an openshift cluster in IBM Cloud
+- create your secret manager instance in your IBM Cloud account ( a free one can be used during a month)\
+  see: https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-create-instance&interface=ui
+- store a few secrets in your instance\
+  see: https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-user-credentials&interface=ui
+  
+The mecanism is quite the same as with sealed secrets: an operator will regularly watch custom resources defining
+- where the secrets are kept (CRD secretStore)
+- what are the desired secrets (CR ExternalSecret)\
+  
+and create the real secrets in the cluster as needed
+
+install the operator
+```
+TBD
+```
+- create a Secret Store, corresponding to you Secret Manager instane:
+```
+apiVersion: external-secrets.io/v1beta1
+kind: SecretStore
+metadata:
+  name: ibmcloud-secrets-manager-example
+  namespace: external-secrets       
+spec:
+  provider:
+    ibm:
+      #remplace UID in serviceUrl
+      serviceUrl: https://<uid>.eu-de.secrets-manager.appdomain.cloud
+      auth:
+        secretRef:
+          secretApiKeySecretRef:
+            name: secret-api-key
+            key: apikey
+```
+- create an external secret correspondig to the values you add in your Secret Manager
+```
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: ibmcloud-secrets-manager-example
+  namespace: external-secrets
+spec:
+  secretStoreRef:
+    name: ibmcloud-secrets-manager-example
+    kind: SecretStore
+  target:
+    name: ibmcloud-secrets-manager-example
+  data:
+  - secretKey: username
+    remoteRef:
+      property: username
+      key: username_password/<uid>
+  - secretKey: password
+    remoteRef:
+      property: password
+      key: username_password/<uid>
+```
+- check that a new has been created, with right value
+```
+TBD
+```
+
 ```
 # oc get secret/mysecret -o yaml -n default
 apiVersion: v1
