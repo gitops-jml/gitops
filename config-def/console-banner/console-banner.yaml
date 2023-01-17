@@ -6,4 +6,4 @@ spec:
   backgroundColor: red
   color: '#fff'
   location: BannerTop
-  text: WARNING: Cluster operated by GitOps
+  text: 'WARNING: Cluster operated by GitOps'
