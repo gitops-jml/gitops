@@ -151,7 +151,7 @@ foo
 mysecretword
 ```
 
-UC4b: Use IBM Secret Manager to store the secrets
+UC4b: Use IBM Secret Manager to store the secrets (IBM Cloud)
 ---------------------------
 References:
 - https://external-secrets.io/v0.7.0/introduction/overview/
