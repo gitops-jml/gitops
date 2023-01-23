@@ -166,11 +166,28 @@ Pre-requisites:
   see: https://cloud.ibm.com/iam/apikeys to create the key
 
   
+Framework:
 The mecanism is quite then the same as with sealed secrets: an operator will regularly watch custom resources defining
 - where the secrets are kept (CRD secretStore)
 - what are the desired secrets (CR ExternalSecret)
   
 and create the real secrets in the cluster as needed
+
+Usefull commands:
+  ```
+  # log in IBM Cloud with your api key
+  ibmcloud login --apikey <your api key>
+  # retrieve your secret manager ID
+  ibmcloud resource service-instance '<your secret manager name>' --output JSON | jq -r '.[0].crn'
+  # retrieve your secret manager endpoint
+  ibmcloud resource service-instance '<your secret manager name>' --output JSON | jq -r '.[].dashboard_url | .[0:-3]'
+  # retrieve your secret groups
+  ibmcloud secrets-manager secret-groups --service-url https://<your secret manager ID>.eu-de.secrets-manager.appdomain.cloud
+  # create a secret
+  ibmcloud secrets-manager secret-create --secret-type username_password  --resources '[{"name":"mysecret","description":"description for my secret.","username":"user1","password":"mysecret password","labels":["my-test-cluster","tutorial"]}]' --service-url https://<your secret manager ID>.eu-de.secrets-manager.appdomain.cloud
+  # retrieve your secrets
+  ibmcloud secrets-manager secrets --secret-type  username_password --service-url https://<your secret manager ID>.eu-de.secrets-manager.appdomain.cloud
+  ```
 
 Steps:
 - create a new secret (user credential type) in your instance of Secret\
