@@ -208,7 +208,7 @@ Steps:
   spec:
     provider:
       ibm:
-        #remplace UID in serviceUrl
+        #remplace <uid> by your instance UID
         serviceUrl: https://<uid>.eu-de.secrets-manager.appdomain.cloud
         auth:
           secretRef:
@@ -230,6 +230,7 @@ Steps:
     target:
       name: ibmcloud-secrets-manager-example
     data:
+    #remplace <uid> by your secret UID
     - secretKey: username
       remoteRef:
         property: username
