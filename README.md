@@ -156,22 +156,45 @@ UC4b: Use IBM Secret Manager to store the secrets ( NEED TO BE COMPETED )
 
 Pre-requisites:
 - create an openshift cluster in IBM Cloud
+- create a new project to experiment
+  ```
+  oc new project external-secrets
+  ```
 - create your secret manager instance in your IBM Cloud account ( a free one can be used during a month)\
   see: https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-create-instance&interface=ui
 - store a few secrets in your instance\
   see: https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-user-credentials&interface=ui
+- create or use an existing IBM Cloud API key to create a secret\
+  see: https://cloud.ibm.com/iam/apikeys to create the key
+  then use the following command to create a secret
+  ```
+  oc create secret generic secret-api-key --from-literal=apiKey=yourkey -n external-secrets
+  ```
   
-The mecanism is quite the same as with sealed secrets: an operator will regularly watch custom resources defining
+The mecanism is quite then the same as with sealed secrets: an operator will regularly watch custom resources defining
 - where the secrets are kept (CRD secretStore)
-- what are the desired secrets (CR ExternalSecret)\
+- what are the desired secrets (CR ExternalSecret)
   
 and create the real secrets in the cluster as needed
 
-install the operator
+Steps:
+- install the operator using the following subscription:
 ```
-TBD
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: external-secrets-operator
+  namespace: openshift-operators
+spec:
+  channel: alpha
+  installPlanApproval: Automatic
+  name: external-secrets-operator
+  source: community-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: external-secrets-operator.v0.7.2
+
 ```
-- create a Secret Store, corresponding to you Secret Manager instane:
+- create a Secret Store, corresponding to you Secret Manager instance:
 ```
 apiVersion: external-secrets.io/v1beta1
 kind: SecretStore
@@ -187,9 +210,9 @@ spec:
         secretRef:
           secretApiKeySecretRef:
             name: secret-api-key
-            key: apikey
+            key: apiKey
 ```
-- create an external secret correspondig to the values you add in your Secret Manager
+- create an external secret corresponding to the values you add in your Secret Manager
 ```
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -214,30 +237,8 @@ spec:
 ```
 - check that a new has been created, with right value
 ```
-TBD
-```
-
-```
-# oc get secret/mysecret -o yaml -n default
-apiVersion: v1
-data:
-  foo: bXlzZWNyZXR3b3Jk
-kind: Secret
-metadata:
-  name: mysecret
-  namespace: default
-  ownerReferences:
-  - apiVersion: bitnami.com/v1alpha1
-    controller: true
-    kind: SealedSecret
-    name: mysecret
-    uid: aae5fef5-9956-4b6f-831f-ca7b8e89b864
-type: Opaque
-
-# oc extract secret/mysecret -n default
-foo
-# more foo
-mysecretword
+oc get secret ibmcloud-secrets-manager-example -n external-secrets
+oc extract secret/ibmcloud-secrets-manager-example
 ```
 
 UC5: Deploy in several environments, avoiding yaml duplication (Kustomize)
