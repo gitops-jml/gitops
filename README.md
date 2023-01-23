@@ -151,9 +151,12 @@ foo
 mysecretword
 ```
 
-UC4b: Use IBM Secret Manager to store the secrets ( NEED TO BE COMPETED )
+UC4b: Use IBM Secret Manager to store the secrets
 ---------------------------
-
+References:
+- https://external-secrets.io/v0.7.0/introduction/overview/
+- https://external-secrets.io/v0.7.1/provider/ibm-secrets-manager/
+  
 Pre-requisites:
 - create an openshift cluster in IBM Cloud
 - create a new project to experiment
