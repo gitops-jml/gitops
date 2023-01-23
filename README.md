@@ -158,21 +158,13 @@ References:
 - https://external-secrets.io/v0.7.1/provider/ibm-secrets-manager/
   
 Pre-requisites:
-- create an openshift cluster in IBM Cloud
-- create a new project to experiment
-  ```
-  oc new project external-secrets
-  ```
-- create your secret manager instance in your IBM Cloud account ( a free one can be used during a month)\
+- A valid openshift cluster in IBM Cloud
+- A valid secret manager instance in your IBM Cloud account ( a free one can be used during a month)\
   see: https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-create-instance&interface=ui
-- store a few secrets in your instance\
-  see: https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-user-credentials&interface=ui
-- create or use an existing IBM Cloud API key to create a secret\
+
+- a valid IBM Cloud API key\
   see: https://cloud.ibm.com/iam/apikeys to create the key
-  then use the following command to create a secret
-  ```
-  oc create secret generic secret-api-key --from-literal=apiKey=yourkey -n external-secrets
-  ```
+
   
 The mecanism is quite then the same as with sealed secrets: an operator will regularly watch custom resources defining
 - where the secrets are kept (CRD secretStore)
@@ -181,68 +173,77 @@ The mecanism is quite then the same as with sealed secrets: an operator will reg
 and create the real secrets in the cluster as needed
 
 Steps:
+- create a new secret (user credential type) in your instance of Secret\
+  see: https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-user-credentials&interface=ui
+- create a new project to experiment
+  ```
+  oc new project external-secrets
+  ```
+  create a secret from your API key
+  ```
+  oc create secret generic secret-api-key --from-literal=apiKey=yourkey -n external-secrets
+  ```
 - install the operator using the following subscription:
-```
-apiVersion: operators.coreos.com/v1alpha1
-kind: Subscription
-metadata:
-  name: external-secrets-operator
-  namespace: openshift-operators
-spec:
-  channel: alpha
-  installPlanApproval: Automatic
-  name: external-secrets-operator
-  source: community-operators
-  sourceNamespace: openshift-marketplace
-  startingCSV: external-secrets-operator.v0.7.2
-
-```
+  ```
+  apiVersion: operators.coreos.com/v1alpha1
+  kind: Subscription
+  metadata:
+    name: external-secrets-operator
+    namespace: openshift-operators
+  spec:
+    channel: alpha
+    installPlanApproval: Automatic
+    name: external-secrets-operator
+    source: community-operators
+    sourceNamespace: openshift-marketplace
+    startingCSV: external-secrets-operator.v0.7.2
+  ```
 - create a Secret Store, corresponding to you Secret Manager instance:
-```
-apiVersion: external-secrets.io/v1beta1
-kind: SecretStore
-metadata:
-  name: ibmcloud-secrets-manager-example
-  namespace: external-secrets       
-spec:
-  provider:
-    ibm:
-      #remplace UID in serviceUrl
-      serviceUrl: https://<uid>.eu-de.secrets-manager.appdomain.cloud
-      auth:
-        secretRef:
-          secretApiKeySecretRef:
-            name: secret-api-key
-            key: apiKey
-```
+  ```
+  apiVersion: external-secrets.io/v1beta1
+  kind: SecretStore
+  metadata:
+    name: ibmcloud-secrets-manager-example
+    namespace: external-secrets       
+  spec:
+    provider:
+      ibm:
+        #remplace UID in serviceUrl
+        serviceUrl: https://<uid>.eu-de.secrets-manager.appdomain.cloud
+        auth:
+          secretRef:
+            secretApiKeySecretRef:
+              name: secret-api-key
+              key: apiKey
+  ```
 - create an external secret corresponding to the values you add in your Secret Manager
-```
-apiVersion: external-secrets.io/v1beta1
-kind: ExternalSecret
-metadata:
-  name: ibmcloud-secrets-manager-example
-  namespace: external-secrets
-spec:
-  secretStoreRef:
+  ```
+  apiVersion: external-secrets.io/v1beta1
+  kind: ExternalSecret
+  metadata:
     name: ibmcloud-secrets-manager-example
-    kind: SecretStore
-  target:
-    name: ibmcloud-secrets-manager-example
-  data:
-  - secretKey: username
-    remoteRef:
-      property: username
-      key: username_password/<uid>
-  - secretKey: password
-    remoteRef:
-      property: password
-      key: username_password/<uid>
-```
+    namespace: external-secrets
+  spec:
+    secretStoreRef:
+      name: ibmcloud-secrets-manager-example
+      kind: SecretStore
+    target:
+      name: ibmcloud-secrets-manager-example
+    data:
+    - secretKey: username
+      remoteRef:
+        property: username
+        key: username_password/<uid>
+    - secretKey: password
+      remoteRef:
+        property: password
+        key: username_password/<uid>
+  ```
 - check that a new has been created, with right value
-```
-oc get secret ibmcloud-secrets-manager-example -n external-secrets
-oc extract secret/ibmcloud-secrets-manager-example
-```
+  ```
+  oc get secret ibmcloud-secrets-manager-example -n external-secrets
+  oc extract secret/ibmcloud-secrets-manager-example
+  ```
 
 UC5: Deploy in several environments, avoiding yaml duplication (Kustomize)
 ---------------------------
