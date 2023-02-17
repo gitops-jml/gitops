@@ -37,12 +37,13 @@ Installing Openshift GitOps
 
 ![Image](./images/ArgoCDlink.jpg)
 
-Simple use cases
+Simple use cases (Labs)
 =====================
 
 Pre-req
 ---------------------------
 - fork and then clone the current repository in your environment
+  `git clone https://github.com/gitops-jml/gitops-with-argocd.git GitRepos`
 
 In this repository:
   - argo folders contain the descriptions of the various Argo CRD (applications and projects)
@@ -58,7 +59,7 @@ UC1: Add a link to the OCP Console
 ![Image](./images/uc1.jpg)
 
 - create a new ArcoCD application from this file\
-`cd gitops-with-argocd; oc apply -f argo-crd/config/console/console-link.yaml`
+`cd ; oc apply -f GitRepos/gitops-with-argocd/argo-crd/config/console/console-link.yaml`
 
 - look at the new Application in ArgoCD console.\
 It's status should be Out Of Sync, because the target resources don't exist yet and the synchronization mode is Manual
@@ -74,7 +75,7 @@ UC2: Add a banner to the OCP Console
 ---------------------------
 
 - create a new ArcoCD application from this file\
-`cd gitops-with-argocd; oc apply -f argo-crd/config/console-banner/console-banner.yaml`
+`cd ; oc apply -f GitRepos/gitops-with-argocd/argo-crd/config/console-banner/console-banner.yaml`
 
 - look at the new Application in ArgoCD console.\
   Sync is automatic for this new application. Wait for the synced status and verifiy that a new banner is added to the OCP console
@@ -84,7 +85,7 @@ UC3: Deploy a simple application (petclinic)
 - look at  [PetClinicArgoApp.yaml](./argo-crd/apps/PetClinic/PetClinicArgoApp.yaml) that defines the sources (yaml manifests) and destination (ocp cluster and namespace)
 
 - create a new ArcoCD application from this file\
-`cd gitops-with-argocd; oc apply -f argo-crd/apps/PetClinic/PetClinicArgoApp.yaml`
+`cd ; oc apply -f GitRepos/gitops-with-argocd/argo-crd/apps/PetClinic/PetClinicArgoApp.yaml`
 
 - look at the new Application in ArgoCD console.\
 For this application the Sync mode is automatic so you don't have to use the Sync button
@@ -194,7 +195,7 @@ Steps:
   see: https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-user-credentials&interface=ui
 - create a new project to experiment
   ```
-  oc new project external-secrets
+  oc new-project external-secrets
   ```
   create a secret from your API key (used to access Secret Manager)
   ```
@@ -217,7 +218,7 @@ Steps:
   ```
   To install it using ArgoCD, create a new application
   ```
-  oc apply argoc-cd/config/external-secrets-operator
+  cd ; oc apply GitRepos/gitops-with-argocd/argoc-cd/config/external-secrets-operator
   ```
 - create a Secret Store, corresponding to you Secret Manager instance:
   ```
@@ -287,7 +288,7 @@ We will use a very basic nodejs application to demonstrate. This application is 
 
 The [argo-crd/apps/simplenodejs](./argo-crd/apps/simplenodejs) folder describes two ArgoCD applications and project definitions, one for DEV and the other for PROD
 
-1. use `oc apply -f argo-crd/apps/simplenodejs/simplenodejsAppDEV.yaml` and `oc apply -f argo-crd/apps/simplenodejs/simplenodejsAppPROD.yaml` to create the ArgoCD applications
+1. use `cd ; oc apply -f GitRepos/gitops-with-argocd/argo-crd/apps/simplenodejs/simplenodejsAppDEV.yaml` and `cd ; oc apply -f GitRepos/gitops-with-argocd/argo-crd/apps/simplenodejs/simplenodejsAppPROD.yaml` to create the ArgoCD applications
 
 2. synchronize the application using ArgoCD console
 
