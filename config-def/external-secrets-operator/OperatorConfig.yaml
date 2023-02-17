@@ -3,7 +3,7 @@ kind: OperatorConfig
 metadata:
   name: cluster
   namespace: openshift-operators
-  spec:
+spec:
   prometheus:
     enabled: true
     service:
