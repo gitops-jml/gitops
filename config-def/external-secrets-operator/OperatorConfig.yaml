@@ -2,7 +2,8 @@ apiVersion: operator.external-secrets.io/v1alpha1
 kind: OperatorConfig
 metadata:
   name: cluster
-spec:
+  namespace: openshift-operators
+  spec:
   prometheus:
     enabled: true
     service:
@@ -14,4 +15,3 @@ spec:
    limits:
      cpu: 100m
      memory: 256Mi
-     
