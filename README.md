@@ -167,11 +167,11 @@ Pre-requisites:
 
   
 Framework:
-The mecanism is quite then the same as with sealed secrets: an operator will regularly watch custom resources defining
+The mecanism is quite the same as with sealed secrets: an operator will regularly watch custom resources defining
 - where the secrets are kept (CRD secretStore)
 - what are the desired secrets (CR ExternalSecret)
   
-and create the real secrets in the cluster as needed
+and create the real secrets in the cluster as specified in each ExternalSecret instance
 
 Usefull commands:
   ```
@@ -190,17 +190,17 @@ Usefull commands:
   ```
 
 Steps:
-- create a new secret (user credential type) in your instance of Secret\
+- create a new secret (user credential type) in your instance of Secret Manager\
   see: https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-user-credentials&interface=ui
 - create a new project to experiment
   ```
   oc new project external-secrets
   ```
-  create a secret from your API key
+  create a secret from your API key (used to access Secret Manager)
   ```
-  oc create secret generic secret-api-key --from-literal=apiKey=yourkey -n external-secrets
+  oc create secret generic secret-api-key --from-literal=apiKey=<yourkey> -n external-secrets
   ```
-- install the operator using the following subscription:
+- The operator can be installed "manually" using the following subscription or by ArgoCD (see further):
   ```
   apiVersion: operators.coreos.com/v1alpha1
   kind: Subscription
@@ -214,6 +214,10 @@ Steps:
     source: community-operators
     sourceNamespace: openshift-marketplace
     startingCSV: external-secrets-operator.v0.7.2
+  ```
+  To install it using ArgoCD, create a new application
+  ```
+  oc apply argoc-cd/config/external-secrets-operator
   ```
 - create a Secret Store, corresponding to you Secret Manager instance:
   ```
