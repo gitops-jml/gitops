@@ -1,5 +1,21 @@
 GitOps exploration
 =====================
+
+TOC:
+[Installing Openshift Gitops](https://github.com/gitops-jml/gitops-with-argocd#installing-openshift-gitops)
+[Simple Use Cases](https://github.com/gitops-jml/gitops-with-argocd#simple-use-cases-labs)
+[PreReq](https://github.com/gitops-jml/gitops-with-argocd#pre-req)
+[UC1: add a link to OCP console](https://github.com/gitops-jml/gitops-with-argocd#uc1-add-a-link-to-the-ocp-console)
+[UC2: add a banner to OCP console](https://github.com/gitops-jml/gitops-with-argocd#uc2-add-a-banner-to-the-ocp-console)
+[UC3: deploy a simple application](https://github.com/gitops-jml/gitops-with-argocd#uc3-deploy-a-simple-application-petclinic)
+[UC4a: use sealed secrets](https://github.com/gitops-jmlgitops-with-argocd#uc4a-use-sealed-secrets-to-store-the-secrets--need-to-be-competed-)
+[UC4b: use IBM Secret Manager](https://github.com/gitops-jml/gitops-with-argocd#uc4b-use-ibm-secret-manager-to-store-the-secrets-ibm-cloud)
+[UC5: Deploy in several environments (Kustomize)](https://github.com/gitops-jml/gitops-with-argocd#uc5-deploy-in-several-environments-avoiding-yaml-duplication-kustomize)
+[UC6: IBM implementation for deploying software (APIC)](https://github.com/gitops-jml/gitops-with-argocd#uc6-ibm-implementation-for-deploying-software-apic-with-argocd-and-configuring-it-with-tekton)
+
+
+About GitOps
+=====================
 GitOps is a declarative approach to **continuous delivery** that uses Git as the single source of truth for everything (infrastructure and application)
 
 ![Image](./images/DeliveryModel.jpg)
