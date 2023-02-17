@@ -174,7 +174,7 @@ References:
 - https://external-secrets.io/v0.7.0/introduction/overview/
 - https://external-secrets.io/v0.7.1/provider/ibm-secrets-manager/
   
-Pre-requisites:
+Additional Pre-requisites:
 - A valid openshift cluster in IBM Cloud
 - A valid secret manager instance in your IBM Cloud account ( a free one can be used during a month)\
   see: https://cloud.ibm.com/docs/secrets-manager?topic=secrets-manager-create-instance&interface=ui
@@ -217,7 +217,7 @@ Steps:
   ```
   oc create secret generic secret-api-key --from-literal=apiKey=<yourkey> -n external-secrets
   ```
-- The operator can be installed "manually" using the following subscription or by ArgoCD (see further):
+- The operator can be installed "manually" using the following subscription and OperatorConfig, or by ArgoCD (see further):
   ```
   apiVersion: operators.coreos.com/v1alpha1
   kind: Subscription
@@ -231,8 +231,26 @@ Steps:
     source: community-operators
     sourceNamespace: openshift-marketplace
     startingCSV: external-secrets-operator.v0.7.2
+  ---
+  apiVersion: operator.external-secrets.io/v1alpha1
+  kind: OperatorConfig
+  metadata:
+    name: cluster
+    namespace: openshift-operators
+  spec:
+    prometheus:
+      enabled: true
+      service:
+      port: 8080
+  resources:
+   requests:
+     cpu: 10m
+     memory: 96Mi
+   limits:
+     cpu: 100m
+     memory: 256Mi
   ```
-  To install it using ArgoCD, create a new application
+  To install the operator using ArgoCD, create a new ArgoCD application
   ```
   cd ; oc apply GitRepos/gitops-with-argocd/argoc-cd/config/external-secrets-operator
   ```
@@ -278,7 +296,7 @@ Steps:
         property: password
         key: username_password/<uid>
   ```
-- check that a new has been created, with right value
+- check that a new secret has been created, with right values
   ```
   oc get secret ibmcloud-secrets-manager-example -n external-secrets
   oc extract secret/ibmcloud-secrets-manager-example
