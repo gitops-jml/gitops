@@ -1,7 +1,8 @@
-GitOps exploration
+<center>GitOps exploration</center>
 =====================
 
 TOC:
+=====================
 - [Installing Openshift Gitops](https://github.com/gitops-jml/gitops-with-argocd#installing-openshift-gitops)
 - [Simple Use Cases](https://github.com/gitops-jml/gitops-with-argocd#simple-use-cases-labs)
   - [PreReq](https://github.com/gitops-jml/gitops-with-argocd#pre-req)
